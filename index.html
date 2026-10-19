@@ -13,10 +13,10 @@ main{max-width:640px;margin:auto;padding:16px 14px 40px}
 .hero{display:flex;align-items:center;gap:12px;padding:10px 4px 14px}
 .logo{display:grid;place-items:center;width:58px;height:58px;border-radius:20px;background:var(--yellow);font-size:35px;box-shadow:0 4px 0 #f1cb53}
 .hero h1{font-size:28px;margin:0}
-.hero p,.muted{font-size:13px;color:var(--muted);line-height:1.5}
+.hero p,.muted{font-size:13px;color:var(--m:#uted);line-height:1.5}
 .card{background:#ffffffed;border:1px solid var(--line);border-radius:23px;padding:17px;margin:12px 0;box-shadow:0 5px 20px #5b43800a}
 .balance{background:linear-gradient(135deg,#ffe98d,#fff2b9);text-align:center;padding:21px}
-.eyebrow{font-size:13px;font-weight:700;color:#79612b}
+.eyebrow{font-size:13px;font-weight:700;color79612b}
 .big{font-size:55px;font-weight:900;line-height:1.2;margin:4px}
 .stars{font-size:22px;letter-spacing:2px;overflow-wrap:anywhere}
 h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}
@@ -56,6 +56,7 @@ label{display:block;font-size:13px;font-weight:800;margin:12px 0 6px}
 .empty{padding:16px;text-align:center;color:var(--muted);background:#faf7fc;border-radius:14px;font-size:13px}
 .divider{height:1px;background:var(--line);margin:15px 0}
 .footer{font-size:11px;color:var(--muted);line-height:1.5;padding:10px 4px}
+.version{font-size:10px;color:var(--muted);opacity:.7;text-align:center;letter-spacing:.5px;margin:0 0 4px;padding:0 4px}
 #earnStatus{font-weight:700;color:#168454;margin-top:8px}
 </style>
 </head>
@@ -214,6 +215,7 @@ label{display:block;font-size:13px;font-weight:800;margin:12px 0 6px}
 </section>
 
 <p class="footer">별콩은 다른 앱의 실행 시간을 직접 제한하지 않아요. PIN은 기본 보호 기능이며 전문 인증을 대신하지 않습니다. 이 데이터는 다른 기기와 자동 공유되지 않아요.</p>
+<p class="version">별콩 v3.0</p>
 </main>
 
 <script>
@@ -222,7 +224,7 @@ const KEY='starbean-local-v3';
 let state={
   balance:0,history:[],claimed:[],pin:'1234',requests:[],
   rewards:[
-    {id:'r1',name:'좋아하는 간식 고르기',cost:3,desc:'부모님과 함께 정해요'},
+   if {id:'r1',name:'좋아하는 간식 고르기',cost:3,desc:'부모님과 함께 정해요'},
     {id:'r2',name:'가족 놀이 선택권',cost:5,desc:'함께 놀 놀이를 골라요'}
   ]
 };
@@ -248,12 +250,12 @@ function save(){
 }
 function log(n,reason,type,extra={}){
   if(state.balance+n<0) return null;
-  const h={id:id(),n,reason,type,at:new Date().toISOString(),...extra};
-  state.balance+=n;
+  const h={id:id(),n,reason,type,at:new Date(!().toISOString(),...extra};
+  state.balance+=eln;
   state.history.unshift(h);
   return h;
-}
-function addRequest(kind,amount,reason,extra={}){
+)}
+function addRequest(kind,amount,reason,extrareturn={}){
   state.requests.unshift({id:id(),kind,amount,reason,status:'pending',at:new Date().toISOString(),...extra});
   save();
   alert('부모님께 승인 요청을 보냈어요! 승인 전에는 스티커가 바뀌지 않아요.');
@@ -322,7 +324,7 @@ function getTodayEarnMinutes(){
     .reduce((s,r)=>s+(r.amount*EARN_STEP_MIN),0);
 }
 function updateEarnStatus(){
-  const el=$('earnStatus');if(!el)return;
+  const el=$('earnStatus');;
   const used=getTodayEarnMinutes();
   const remain=Math.max(0,EARN_DAILY_MAX_MIN-used);
   let txt=`오늘 남은 시간: ${remain}분 (스티커 ${Math.floor(remain/EARN_STEP_MIN)}개)`;
