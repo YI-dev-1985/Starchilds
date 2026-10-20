@@ -3,585 +3,877 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff5c9">
-<title>별콩 - 우리 가족 스티커</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff8e9">
+<title>별콩 스티커 관리</title>
 <style>
-:root{--ink:#40384b;--muted:#827b8d;--purple:#7961c9;--yellow:#ffe58a;--pink:#ffe2e8;--green:#dcf6e8;--line:#eee5f5}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(180deg,#fff9e8,#fff3f8 65%,#f7f4ff);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;color:var(--ink)}
-main{max-width:640px;margin:auto;padding:16px 14px 40px}
-.hero{display:flex;align-items:center;gap:12px;padding:10px 4px 14px}
-.logo{display:grid;place-items:center;width:58px;height:58px;border-radius:20px;background:var(--yellow);font-size:35px;box-shadow:0 4px 0 #f1cb53;flex-shrink:0}
-.hero h1{font-size:28px;margin:0}
-.hero p,.muted{font-size:13px;color:var(--muted);line-height:1.5}
-.card{background:#ffffffed;border:1px solid var(--line);border-radius:23px;padding:17px;margin:12px 0;box-shadow:0 5px 20px #5b43800a}
-.balance{background:linear-gradient(135deg,#ffe98d,#fff2b9);text-align:center;padding:21px}
-.eyebrow{font-size:13px;font-weight:700;color:#79612b}
-.big{font-size:55px;font-weight:900;line-height:1.2;margin:4px}
-.stars{font-size:22px;letter-spacing:2px;overflow-wrap:anywhere;line-height:1.5}
-.time-left{margin:10px auto 2px;padding:10px 12px;max-width:290px;border-radius:15px;background:#fff9dc;font-weight:850}
-.time-left strong{font-size:24px;display:block;margin-top:2px}
-h1,h2,h3{word-break:keep-all;overflow-wrap:break-word}
-h2{font-size:18px;margin:0 0 12px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.tag{font-size:11px;background:#f2edff;color:#6b53b5;border-radius:99px;padding:5px 9px;font-weight:800}
-.toggle-btn{width:auto;padding:6px 12px;font-size:12px;min-height:32px;background:#f2edff;color:#6b53b5;border-radius:99px}
-.row{display:flex;gap:9px;align-items:flex-start}
-.row>*{min-width:0;flex:1}
-button,input,select,textarea{font:inherit;width:100%;border-radius:14px;border:1px solid #e3d9ed;padding:13px;background:#fff;color:var(--ink)}
-button{border:0;background:#eee8ff;font-weight:800;cursor:pointer;min-height:46px}
-button.primary{background:var(--yellow)}
-button.green{background:var(--green)}
-button.pink{background:var(--pink)}
-button.ghost{background:#f7f4fa;border:1px solid var(--line)}
-button:disabled{opacity:.45;cursor:not-allowed}
-label{display:block;font-size:13px;font-weight:800;margin:12px 0 6px}
-.note{font-size:12px;line-height:1.55;color:var(--muted)}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
-.tabs button.active{background:var(--purple);color:white}
-.hidden{display:none!important}
-.scroll-area{max-height:320px;overflow-y:auto;padding-right:6px;margin-top:10px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
-.scroll-area::-webkit-scrollbar{width:6px}
-.scroll-area::-webkit-scrollbar-thumb{background:#d8cbe8;border-radius:3px}
-.item,.reward{display:flex;align-items:flex-start;gap:10px;justify-content:space-between;padding:12px;border-radius:15px;background:#fffaf1;margin:8px 0}
-.item .details{min-width:0;flex:1}
-.item strong{display:block;overflow-wrap:anywhere}
-.item .sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45}
-.amount{font-size:16px;font-weight:900;white-space:nowrap}
-.plus{color:#168454}
-.minus{color:#c34b62}
-.pending{background:#fff7d8}
-.actions{display:flex;gap:6px;margin-top:9px}
-.actions button{min-height:38px;padding:8px;font-size:12px}
-.reward{border:1px solid var(--line);background:#fff;border-radius:17px}
-.reward-name{font-weight:850}
-.empty{padding:16px;text-align:center;color:var(--muted);background:#faf7fc;border-radius:14px;font-size:13px}
-.divider{height:1px;background:var(--line);margin:15px 0}
-.footer{font-size:11px;color:var(--muted);line-height:1.5;padding:10px 4px}
-.version{font-size:10px;color:var(--muted);opacity:.7;text-align:center;letter-spacing:.5px;margin:0 0 4px;padding:0 4px}
-#earnStatus{font-weight:700;color:#168454;margin-top:8px}
-@media(max-width:380px){main{padding:12px 10px 30px}.card{padding:14px}.big{font-size:48px}.row{gap:7px}}
+:root {
+  --bg: #fff8e9;
+  --card: #ffffff;
+  --ink: #40352d;
+  --muted: #887c70;
+  --line: #eee2d1;
+  --primary: #8c6be8;
+  --primary-dark: #6f4fd0;
+  --green: #29986b;
+  --red: #d95e62;
+  --orange: #edaa43;
+  --shadow: 0 5px 18px rgba(85, 62, 33, .07);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.app { max-width: 720px; margin: auto; padding: 16px 14px 36px; }
+header { padding: 10px 4px 16px; }
+.brand { display:flex; align-items:center; gap:10px; }
+.logo {
+  width:48px; height:48px; display:grid; place-items:center;
+  background:#ffe6a8; border-radius:17px; font-size:27px;
+}
+h1 { font-size:24px; margin:0; letter-spacing:-.7px; }
+.subtitle { color:var(--muted); font-size:13px; margin-top:2px; }
+.tabs { display:flex; gap:8px; margin:10px 0 16px; }
+.tab {
+  flex:1; border:1px solid var(--line); background:#fff;
+  padding:12px 8px; border-radius:14px; font-weight:800; color:var(--muted);
+}
+.tab.active { background:var(--primary); color:white; border-color:var(--primary); }
+.card {
+  background:var(--card); border:1px solid var(--line);
+  border-radius:20px; padding:17px; margin-bottom:13px; box-shadow:var(--shadow);
+  min-width:0;
+}
+.card h2 { font-size:17px; margin:0 0 12px; }
+.card h3 { font-size:15px; margin:0; }
+.hero {
+  background:linear-gradient(135deg,#8b6be8,#b69bf8);
+  color:white; border-radius:22px; padding:20px; margin-bottom:14px;
+}
+.hero-label { font-size:13px; opacity:.9; }
+.balance { font-size:42px; font-weight:900; letter-spacing:-1.5px; line-height:1.25; }
+.balance small { font-size:17px; letter-spacing:0; }
+.time-pill {
+  display:inline-flex; align-items:center; gap:6px; margin-top:10px;
+  padding:7px 11px; border-radius:30px; background:rgba(255,255,255,.2);
+  font-size:14px; font-weight:700;
+}
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.stat {
+  background:#fffaf2; border:1px solid var(--line); padding:13px;
+  border-radius:15px; min-width:0;
+}
+.stat-label { font-size:12px; color:var(--muted); }
+.stat-value { font-size:20px; font-weight:900; margin-top:3px; overflow-wrap:anywhere; }
+label { display:block; font-size:13px; font-weight:800; margin:12px 0 6px; }
+input, select, textarea {
+  width:100%; min-width:0; border:1px solid #e5d8c7; background:#fff;
+  border-radius:12px; padding:11px 12px; color:var(--ink); outline:none;
+}
+input:focus, select:focus, textarea:focus { border-color:var(--primary); }
+textarea { resize:vertical; min-height:72px; }
+button.primary, button.secondary, button.danger, button.light, button.small-btn {
+  border:0; border-radius:12px; padding:11px 14px; font-weight:800;
+}
+button.primary { background:var(--primary); color:#fff; }
+button.primary:hover { background:var(--primary-dark); }
+button.secondary { background:#efe9ff; color:#6749bf; }
+button.danger { background:#fff0ef; color:#bc4e53; }
+button.light { background:#f6f0e6; color:var(--ink); }
+button.small-btn { padding:7px 10px; font-size:12px; background:#f3edff; color:#6749bf; }
+.full { width:100%; margin-top:12px; }
+.muted { color:var(--muted); font-size:12px; }
+.divider { border-top:1px solid var(--line); margin:16px 0; }
+.row { display:flex; gap:8px; align-items:center; }
+.row > * { min-width:0; }
+.row .grow { flex:1; }
+.section-head {
+  display:flex; justify-content:space-between; align-items:center;
+  gap:8px; min-width:0; margin-bottom:10px;
+}
+.section-head h3 {
+  flex:1; min-width:0; overflow-wrap:normal; word-break:keep-all;
+}
+.toggle-btn {
+  flex:0 0 auto; white-space:nowrap; border:1px solid var(--line);
+  background:#fffaf2; border-radius:10px; padding:7px 10px;
+  font-size:12px; font-weight:800; color:var(--ink);
+}
+.hidden { display:none !important; }
+.list { display:flex; flex-direction:column; gap:9px; }
+.item {
+  border:1px solid var(--line); border-radius:14px; padding:12px;
+  background:#fffdf9; min-width:0;
+}
+.item-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.item-title { font-weight:850; overflow-wrap:anywhere; }
+.item-desc { font-size:12px; color:var(--muted); margin-top:3px; overflow-wrap:anywhere; }
+.item-actions { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.amount { font-weight:900; white-space:nowrap; }
+.positive { color:var(--green); }
+.negative { color:var(--red); }
+.badge {
+  display:inline-block; padding:3px 8px; border-radius:30px;
+  background:#f3edff; color:#6749bf; font-size:11px; font-weight:800;
+}
+.badge.ok { background:#e7f7ee; color:#24875e; }
+.badge.no { background:#fff0ef; color:#bd4b51; }
+.badge.wait { background:#fff2d7; color:#986717; }
+.empty { text-align:center; padding:24px 8px; color:var(--muted); font-size:13px; }
+.notice {
+  border-radius:13px; background:#fff6dc; padding:12px;
+  color:#765b22; font-size:12px; margin-top:10px;
+}
+.footer { text-align:center; color:var(--muted); font-size:11px; padding:12px 4px; }
+.scroll-area { max-height:360px; overflow-y:auto; }
+.parent-only { display:none; }
+#parentView.unlocked .parent-only { display:block; }
+.pin-box { max-width:360px; margin:25px auto; }
+.pin-box .card { text-align:left; }
+@media (max-width:380px) {
+  .app { padding:12px 10px 28px; }
+  .card { padding:14px; }
+  .balance { font-size:36px; }
+  .section-head h3 { font-size:13px !important; }
+}
 </style>
 </head>
 <body>
-<main>
-<header class="hero">
-  <div class="logo">★</div>
-  <div><h1>별콩</h1><p>차곡차곡 모으는 나의 스티커 모험!</p></div>
-</header>
+<div class="app">
+  <header>
+    <div class="brand">
+      <div class="logo">⭐</div>
+      <div>
+        <h1>별콩 스티커</h1>
+        <div class="subtitle">스티커를 모으고, 약속한 보상을 받아요!</div>
+      </div>
+    </div>
+  </header>
 
-<section class="card balance">
-  <div class="eyebrow">✨ 내가 모은 스티커</div>
-  <div class="big" id="balance">0</div>
-  <div class="stars" id="stars">☆ ☆ ☆ ☆ ☆</div>
-  <div class="time-left">🎮 게임으로 바꿀 수 있는 시간<strong id="remainingTime">0분</strong><span class="note">스티커 1개 = 게임 5분</span></div>
-  <p class="muted">평일 하루 9개 · 안 쓴 스티커는 계속 모여요.</p>
-</section>
+  <nav class="tabs">
+    <button class="tab active" data-view="child">🧒 아이 화면</button>
+    <button class="tab" data-view="parent">👨‍👩‍👦 부모님 화면</button>
+  </nav>
 
-<div class="tabs">
-  <button id="childTab" class="active">🌟 어린이 화면</button>
-  <button id="parentTab">🔐 부모님 관리</button>
+  <!-- 아이 화면 -->
+  <main id="childView">
+    <section class="hero">
+      <div class="hero-label">✨ 지금까지 모은 스티커</div>
+      <div class="balance"><span id="childBalance">0</span><small> 개</small></div>
+      <div class="time-pill">🎮 게임 가능 시간 <span id="childGameTime">0분</span></div>
+    </section>
+
+    <div class="grid2">
+      <div class="stat">
+        <div class="stat-label">스티커 1개당</div>
+        <div class="stat-value">5분</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">확인 대기 요청</div>
+        <div class="stat-value" id="pendingCount">0건</div>
+      </div>
+    </div>
+
+    <section class="card" style="margin-top:13px">
+      <h2>🎁 스티커 획득 / 사용 요청</h2>
+      <p class="muted">요청을 보내면 부모님이 확인한 뒤 잔액에 반영돼요.</p>
+      <form id="childRequestForm">
+        <label for="requestType">요청 종류</label>
+        <select id="requestType">
+          <option value="earn">⭐ 스티커 획득 요청</option>
+          <option value="spend">🎮 스티커 사용 요청</option>
+        </select>
+        <label for="requestAmount">스티커 개수</label>
+        <input id="requestAmount" type="number" min="1" max="10000" step="1" value="1" required>
+        <label for="requestNote">이유 / 내용</label>
+        <textarea id="requestNote" maxlength="200" placeholder="예: 숙제를 다 했어요!"></textarea>
+        <button class="primary full" type="submit">부모님께 확인 요청하기</button>
+      </form>
+      <div class="notice">스티커 획득과 사용은 부모님이 승인해야 실제 잔액에 반영돼요.</div>
+    </section>
+
+    <section class="card">
+      <h2>📋 부모님 확인 내용</h2>
+      <p class="muted">내가 보낸 요청, 승인·거절 결과, 스티커 수정 및 복구 기록을 확인할 수 있어요.</p>
+      <div id="childConfirmList" class="list"></div>
+    </section>
+
+    <section class="card">
+      <h2>⭐ 스티커 사용 안내</h2>
+      <div class="grid2">
+        <div class="stat"><div class="stat-label">스티커 1개</div><div class="stat-value">5분</div></div>
+        <div class="stat"><div class="stat-label">스티커 12개</div><div class="stat-value">1시간</div></div>
+      </div>
+      <p class="muted" style="margin-bottom:0">게임 가능 시간은 현재 스티커 잔액을 기준으로 계산해요. 실제 게임 시간 측정 기능은 포함되어 있지 않아요.</p>
+    </section>
+  </main>
+
+  <!-- 부모님 화면 -->
+  <main id="parentView" style="display:none">
+    <div id="pinGate" class="pin-box">
+      <section class="card">
+        <h2>🔐 부모님 확인</h2>
+        <p class="muted">부모님 PIN을 입력해 주세요. 최초 PIN은 1234예요.</p>
+        <form id="pinForm">
+          <label for="parentPin">부모님 PIN</label>
+          <input id="parentPin" type="password" inputmode="numeric" maxlength="12" placeholder="PIN 입력" required>
+          <button class="primary full" type="submit">부모님 화면 열기</button>
+        </form>
+        <p class="muted">PIN은 이 기기의 브라우저에 저장돼요. 실제 계정 인증이나 온라인 보안 기능은 아니에요.</p>
+      </section>
+    </div>
+
+    <div id="parentUnlocked" class="hidden">
+      <section class="hero">
+        <div class="hero-label">👨‍👩‍👦 현재 스티커 잔액</div>
+        <div class="balance"><span id="parentBalance">0</span><small> 개</small></div>
+        <div class="time-pill">🎮 게임 가능 시간 <span id="parentGameTime">0분</span></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2 style="margin:0">📬 아이의 요청</h2>
+          <span id="parentPendingBadge" class="badge wait">0건 대기</span>
+        </div>
+        <div id="parentRequestList" class="list"></div>
+      </section>
+
+      <section class="card">
+        <h2>⭐ 보상 항목 관리</h2>
+        <p class="muted">자주 사용하는 보상이나 할 일을 등록해 둘 수 있어요.</p>
+        <form id="rewardForm">
+          <label for="rewardName">보상 / 할 일 이름</label>
+          <input id="rewardName" maxlength="80" placeholder="예: 책 읽기, 방 정리" required>
+          <label for="rewardAmount">스티커 개수</label>
+          <input id="rewardAmount" type="number" min="1" max="10000" value="1" required>
+          <button class="primary full" type="submit">보상 항목 추가</button>
+        </form>
+        <div class="divider"></div>
+        <div id="rewardList" class="list"></div>
+      </section>
+
+      <section class="card">
+        <h2>🛠️ 잔액 수정 / 잘못된 차감 복구</h2>
+        <p class="muted">잘못 차감한 기록은 지우지 않고 되돌림 기록을 남겨서 복구해요.</p>
+        <form id="adjustForm">
+          <label for="adjustType">수정 종류</label>
+          <select id="adjustType">
+            <option value="add">스티커 추가</option>
+            <option value="subtract">스티커 차감</option>
+          </select>
+          <label for="adjustAmount">변경할 스티커 수</label>
+          <input id="adjustAmount" type="number" min="1" max="10000" value="1" required>
+          <label for="adjustNote">수정 사유</label>
+          <input id="adjustNote" maxlength="200" placeholder="예: 잘못 차감한 스티커 수정" required>
+          <button class="primary full" type="submit">잔액 수정하기</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <!-- 모바일에서 제목과 버튼이 세로로 쪼개지지 않도록 수정 -->
+        <div class="section-head" style="flex-wrap:nowrap;align-items:center;gap:8px">
+          <h3 style="font-size:14px;margin:0;white-space:nowrap;flex:1;min-width:0">최근 차감 되돌리기</h3>
+          <button class="toggle-btn" data-toggle="reversibleListWrap" style="flex:0 0 auto;white-space:nowrap">펼치기</button>
+        </div>
+        <div id="reversibleListWrap" class="hidden">
+          <div id="reversibleList" class="scroll-area"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>🧾 전체 변경 기록</h2>
+        <div class="section-head">
+          <p class="muted" style="margin:0">승인, 획득, 차감, 수정 및 복구 내역</p>
+          <button class="toggle-btn" data-toggle="historyWrap">펼치기</button>
+        </div>
+        <div id="historyWrap" class="hidden">
+          <div id="historyList" class="scroll-area"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>⚙️ 설정 및 데이터 백업</h2>
+        <form id="pinChangeForm">
+          <label for="newPin">새 부모님 PIN</label>
+          <input id="newPin" type="password" inputmode="numeric" minlength="4" maxlength="12" placeholder="4~12자리" required>
+          <button class="secondary full" type="submit">PIN 변경</button>
+        </form>
+        <div class="divider"></div>
+        <button id="exportBtn" class="secondary full" type="button">📥 데이터 백업 파일 저장</button>
+        <label for="importFile">백업 파일 불러오기</label>
+        <input id="importFile" type="file" accept=".json,application/json">
+        <button id="logoutBtn" class="light full" type="button">부모님 화면 잠그기</button>
+        <div class="notice">이 앱은 현재 기기의 브라우저에 데이터를 저장해요. 다른 기기와 자동 동기화되지 않으므로 주기적으로 백업해 주세요. 브라우저 데이터 삭제 시 기록이 사라질 수 있어요.</div>
+      </section>
+    </div>
+  </main>
+
+  <div class="footer">⭐ 별콩 스티커 관리 · 이 기기에 저장</div>
 </div>
 
-<section id="childView">
-  <section class="card">
-    <div class="section-head"><h2>📅 이번 주 스티커</h2><span class="tag" id="weekLabel">이번 주</span></div>
-    <p id="dailyInfo" class="muted">평일 스티커를 확인하고 있어요.</p>
-    <p class="note">월요일부터 금요일까지 하루 9개씩 자동으로 쌓여요. 안 쓴 스티커는 다음 주에도 남아요.</p>
-  </section>
-
-  <section class="card">
-    <h2>🎮 게임 시간 쓰기</h2>
-    <p class="muted">게임 시간 사용은 부모님 승인 후 스티커가 차감돼요.</p>
-    <label for="gameCount">게임 시간</label>
-    <select id="gameCount"><option value="1">5분 · 스티커 1개</option></select>
-    <button id="requestGame" class="primary" style="margin-top:9px">게임 시간 승인 요청</button>
-  </section>
-
-  <section class="card">
-    <h2>🎁 다른 보상 고르기</h2>
-    <p class="muted">간식, 장난감, 가족 활동 등 약속한 보상을 신청해요.</p>
-    <div id="rewardList"></div>
-  </section>
-
-  <section class="card">
-    <h2>🌱 스티커 더 모으기</h2>
-    <p class="muted">할 일을 마쳤다면 스티커 지급을 신청해요. 부모님이 승인하면 잔액에 더해져요.</p>
-    <p class="note">5분 단위로 신청할 수 있어요. 요청 간 5분 대기, 하루 최대 3시간(36개)까지 가능해요.</p>
-    <p id="earnStatus" class="note"></p>
-    <label for="earnReason">무엇을 했나요?</label>
-    <input id="earnReason" maxlength="80" placeholder="예: 장난감 정리하기">
-    <label for="earnAmount">받고 싶은 스티커 (5분 = 1개)</label>
-    <select id="earnAmount"></select>
-    <button id="requestEarn" class="green" style="margin-top:9px">스티커 지급 요청</button>
-  </section>
-
-  <section class="card">
-    <div class="section-head">
-      <h2>📩 부모님 확인 내용</h2>
-      <button class="toggle-btn" data-toggle="myRequestsWrap">펼치기</button>
-    </div>
-    <div id="myRequestsWrap" class="hidden"><div id="myRequests" class="scroll-area"></div></div>
-  </section>
-</section>
-
-<section id="parentView" class="hidden">
-  <section class="card" id="parentGate">
-    <h2>🔐 부모님 확인</h2>
-    <p class="muted">부모님만 신청 승인, 차감, 스티커 수정, 보상 항목 변경을 할 수 있어요.</p>
-    <label for="pin">부모 PIN</label>
-    <input id="pin" type="password" inputmode="numeric" placeholder="PIN 입력" autocomplete="current-password">
-    <button id="unlock" class="primary" style="margin-top:9px">부모님 관리 열기</button>
-    <p class="note">초기 PIN은 1234예요. 처음 사용한 뒤 꼭 변경해 주세요. PIN 보호는 이 기기 안에서의 기본적인 실수 방지 기능입니다.</p>
-  </section>
-
-  <div id="parentPanel" class="hidden">
-    <section class="card">
-      <div class="section-head"><h2>🔔 승인 대기</h2><span class="tag" id="pendingCount">0건</span></div>
-      <div id="pendingList"></div>
-    </section>
-
-    <section class="card">
-      <div class="section-head"><h2>🧸 보상 목록 관리</h2><button class="toggle-btn" data-toggle="manageRewardsWrap">펼치기</button></div>
-      <div id="manageRewardsWrap" class="hidden">
-        <p class="muted">아이 화면에 표시할 보상을 추가하거나 삭제할 수 있어요.</p>
-        <label for="newRewardName">보상 이름</label>
-        <input id="newRewardName" maxlength="60" placeholder="예: 좋아하는 간식 고르기">
-        <div class="row">
-          <div><label for="newRewardCost">필요한 스티커</label>
-            <select id="newRewardCost"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="5">5</option><option value="9">9</option><option value="10">10</option><option value="15">15</option><option value="20">20</option></select>
-          </div>
-          <div><label for="newRewardDesc">설명(선택)</label><input id="newRewardDesc" maxlength="80" placeholder="예: 주말에 사용"></div>
-        </div>
-        <button id="addReward" class="green" style="margin-top:9px">보상 추가</button>
-        <div class="divider"></div><div id="manageRewards" class="scroll-area"></div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>🛠️ 잔액 수정 / 잘못된 차감 복구</h2>
-      <p class="muted">잘못 차감한 기록은 지우지 않고 되돌림 기록을 남겨서 복구해요.</p>
-      <label for="adjustAmount">변경할 스티커 수</label>
-      <select id="adjustAmount">
-        <option value="1">+1개 지급</option><option value="2">+2개 지급</option><option value="3">+3개 지급</option><option value="5">+5개 지급</option>
-        <option value="-1">−1개 차감</option><option value="-2">−2개 차감</option><option value="-3">−3개 차감</option><option value="-5">−5개 차감</option>
-      </select>
-      <label for="adjustReason">변경 사유 (필수)</label>
-      <input id="adjustReason" maxlength="100" placeholder="예: 잘못 입력한 스티커 수정">
-      <button id="adjustBalance" class="primary" style="margin-top:9px">잔액 변경 기록</button>
-      <div class="divider"></div>
-      <div class="section-head"><h3 style="font-size:15px;margin:0">최근 차감 되돌리기</h3><button class="toggle-btn" data-toggle="reversibleListWrap">펼치기</button></div>
-      <div id="reversibleListWrap" class="hidden"><div id="reversibleList" class="scroll-area"></div></div>
-    </section>
-
-    <section class="card">
-      <h2>🔑 부모 설정</h2>
-      <label for="newPin">새 PIN (4자리 이상)</label>
-      <input id="newPin" type="password" inputmode="numeric" placeholder="새 PIN 입력" autocomplete="new-password">
-      <button id="changePin" style="margin-top:9px">PIN 변경</button>
-      <button id="lock" class="ghost" style="margin-top:8px">부모 관리 닫기</button>
-    </section>
-
-    <section class="card">
-      <div class="section-head"><h2>📒 스티커 기록</h2><button class="toggle-btn" data-toggle="historyWrap">펼치기</button></div>
-      <div id="historyWrap" class="hidden"><div id="history" class="scroll-area"></div><p id="empty" class="empty hidden">아직 기록이 없어요.</p></div>
-    </section>
-
-    <section class="card">
-      <h2>📦 백업 / 복원</h2>
-      <p class="note">기록은 이 기기의 브라우저에 저장돼요. 백업을 정기적으로 저장해 주세요. 다른 기기와 자동 공유되지 않아요.</p>
-      <button id="export" class="ghost">백업 파일 저장</button>
-      <div class="divider"></div>
-      <p class="note">백업 파일을 불러오면 현재 데이터가 대체돼요. 복원 전에 현재 파일을 백업해 주세요.</p>
-      <button id="importBtn" class="ghost">백업 파일 불러오기</button>
-      <input id="importFile" type="file" accept="application/json,.json" class="hidden">
-    </section>
-  </div>
-</section>
-
-<p class="footer">별콩은 다른 앱의 실행 시간을 직접 제한하지 않아요. PIN은 기본 보호 기능이며 전문 인증을 대신하지 않습니다. 이 데이터는 다른 기기와 자동 공유되지 않아요.</p>
-<p class="version">별콩 v3.1</p>
-</main>
-
 <script>
-(()=>{'use strict';
-const KEY='starbean-local-v3';
-const LEGACY_KEY='starbean-local-v2';
-const defaultState=()=>({
-  balance:0,history:[],claimed:[],pin:'1234',requests:[],
-  rewards:[
-    {id:'r1',name:'좋아하는 간식 고르기',cost:3,desc:'부모님과 함께 정해요'},
-    {id:'r2',name:'가족 놀이 선택권',cost:5,desc:'함께 놀 놀이를 골라요'}
-  ]
-});
-let state=defaultState();
-const $=id=>document.getElementById(id);
-const dayKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-const fmt=d=>new Date(d).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
-const id=()=>`${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
-const EARN_COOLDOWN_MS=5*60*1000;
-const EARN_DAILY_MAX_MIN=180;
-const EARN_STEP_MIN=5;
-let parentUnlocked=false;
+(() => {
+  "use strict";
 
-function safeLoad(){
-  try{
-    const raw=localStorage.getItem(KEY) ?? localStorage.getItem(LEGACY_KEY);
-    if(!raw)return;
-    const x=JSON.parse(raw);
-    if(!x||typeof x!=='object'||Array.isArray(x))return;
-    const d=defaultState();
-    state={
-      ...d,...x,
-      balance:Number.isFinite(x.balance)&&x.balance>=0?Math.floor(x.balance):d.balance,
-      history:Array.isArray(x.history)?x.history.filter(h=>h&&typeof h==='object'&&Number.isFinite(h.n)):d.history,
-      claimed:Array.isArray(x.claimed)?x.claimed.filter(k=>typeof k==='string'):d.claimed,
-      requests:Array.isArray(x.requests)?x.requests.filter(r=>r&&typeof r==='object'&&typeof r.id==='string'):d.requests,
-      rewards:Array.isArray(x.rewards)?x.rewards.filter(r=>r&&typeof r.id==='string'&&typeof r.name==='string'&&Number.isFinite(r.cost)&&r.cost>0):d.rewards,
-      pin:typeof x.pin==='string'?x.pin:d.pin
+  const STORAGE_KEY = "byeolkong_sticker_app_v3";
+  const DEFAULT_REWARDS = [
+    { id: makeId(), name: "숙제 완료", amount: 2 },
+    { id: makeId(), name: "책 읽기", amount: 1 },
+    { id: makeId(), name: "방 정리", amount: 2 }
+  ];
+
+  function makeId() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  function defaultState() {
+    return {
+      version: 3,
+      balance: 0,
+      pin: "1234",
+      requests: [],
+      history: [],
+      rewards: DEFAULT_REWARDS.map(x => ({...x}))
     };
-  }catch(e){console.warn('저장 데이터를 읽지 못했습니다.',e);}
-}
-function save(){
-  try{
-    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return defaultState();
+      const parsed = JSON.parse(raw);
+      const initial = defaultState();
+      return {
+        ...initial,
+        ...parsed,
+        balance: Math.max(0, Math.floor(Number(parsed.balance) || 0)),
+        pin: String(parsed.pin || "1234"),
+        requests: Array.isArray(parsed.requests) ? parsed.requests : [],
+        history: Array.isArray(parsed.history) ? parsed.history : [],
+        rewards: Array.isArray(parsed.rewards) ? parsed.rewards : initial.rewards
+      };
+    } catch (err) {
+      alert("저장된 데이터를 읽지 못했어요. 백업 파일이 있다면 복원해 주세요.");
+      return defaultState();
+    }
+  }
+
+  let state = loadState();
+  let parentUnlocked = false;
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     render();
-    return true;
-  }catch(e){
-    console.error('저장 실패:',e);
-    alert('저장에 실패했어요. 브라우저 저장 공간이나 설정을 확인해 주세요.');
-    render();
-    return false;
   }
-}
-function log(n,reason,type,extra={}){
-  if(!Number.isInteger(n)||n===0) return null;
-  if(!Number.isFinite(state.balance)||state.balance+n<0) return null;
-  const h={...extra,id:id(),n,reason:String(reason),type:String(type),at:new Date().toISOString()};
-  state.balance+=n;
-  state.history.unshift(h);
-  return h;
-}
-function addRequest(kind,amount,reason,extra={}){
-  const req={id:id(),kind,amount,reason,status:'pending',at:new Date().toISOString(),...extra};
-  state.requests.unshift(req);
-  if(!save()){
-    state.requests=state.requests.filter(r=>r.id!==req.id);
-    return false;
+
+  function esc(value) {
+    return String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;",
+      '"': "&quot;", "'": "&#39;"
+    }[ch]));
   }
-  alert('부모님께 승인 요청을 보냈어요! 승인 전에는 스티커가 바뀌지 않아요.');
-  return true;
-}
-function isPending(r){return r.status==='pending';}
-function esc(s){
-  return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-function trimClaimed(){
-  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-56);
-  const ck=dayKey(cutoff);
-  state.claimed=state.claimed.filter(k=>k>=ck);
-}
-function accrue(){
-  const today=new Date();today.setHours(0,0,0,0);
-  const monday=new Date(today);monday.setDate(monday.getDate()-((monday.getDay()+6)%7));
-  let count=0;
-  for(let d=new Date(monday);d<=today;d.setDate(d.getDate()+1)){
-    if(d.getDay()===0||d.getDay()===6)continue;
-    const k=dayKey(d);
-    if(!state.claimed.includes(k)){
-      const h=log(9,`${k} 평일 기본 스티커`,'기본 지급',{system:true,day:k});
-      if(h){state.claimed.push(k);count++;}
-    }
+
+  function now() {
+    return new Date().toISOString();
   }
-  trimClaimed();
-  $('dailyInfo').textContent=count
-    ? `이번 주 평일 기본 스티커 ${count*9}개가 자동으로 지급됐어요.`
-    : '이번 주 평일 기본 스티커가 이미 반영되어 있어요.';
-  $('weekLabel').textContent=`${monday.getMonth()+1}/${monday.getDate()} 주`;
-  save();
-}
-function approveRequest(req){
-  if(!parentUnlocked){alert('먼저 부모님 확인을 해주세요.');return;}
-  if(!req||!isPending(req))return;
-  if(!Number.isInteger(req.amount)||req.amount<=0){alert('요청 수량이 올바르지 않습니다.');return;}
-  if(req.kind==='game'||req.kind==='reward'){
-    if(state.balance<req.amount){
-      req.status='rejected';req.reviewedAt=new Date().toISOString();req.rejectReason='잔액 부족';
-      save();alert('잔액이 부족해 자동으로 거절 처리했어요.');return;
-    }
-    const h=log(-req.amount,req.reason,req.kind==='game'?'게임 사용 승인':'보상 사용 승인',{requestId:req.id});
-    if(!h){alert('잔액을 변경하지 못했어요.');return;}
-  }else if(req.kind==='earn'){
-    const h=log(req.amount,`스티커 지급 승인: ${req.reason}`,'추가 지급 승인',{requestId:req.id});
-    if(!h){alert('스티커를 지급하지 못했어요.');return;}
-  }else return;
-  req.status='approved';req.reviewedAt=new Date().toISOString();
-  save();
-}
-function rejectRequest(req){
-  if(!parentUnlocked){alert('먼저 부모님 확인을 해주세요.');return;}
-  if(!req||!isPending(req))return;
-  req.status='rejected';req.reviewedAt=new Date().toISOString();save();
-}
-function getLastEarnRequest(){
-  // 승인/대기/거절 여부와 관계없이 최근 신청을 기준으로 5분 대기 적용
-  return state.requests.find(r=>r.kind==='earn');
-}
-function getTodayEarnMinutes(){
-  const tk=dayKey(new Date());
-  return state.requests
-    .filter(r=>r.kind==='earn'&&r.status!=='rejected'&&dayKey(new Date(r.at))===tk)
-    .reduce((sum,r)=>sum+(Number(r.minutes)||Number(r.amount)*EARN_STEP_MIN),0);
-}
-function formatMinutes(minutes){
-  const m=Math.max(0,Math.floor(minutes));
-  const hours=Math.floor(m/60),mins=m%60;
-  if(hours&&mins)return `${hours}시간 ${mins}분`;
-  if(hours)return `${hours}시간`;
-  return `${mins}분`;
-}
-function updateEarnStatus(){
-  const used=getTodayEarnMinutes();
-  const remain=Math.max(0,EARN_DAILY_MAX_MIN-used);
-  let txt=`오늘 남은 획득 한도: ${remain}분 (스티커 ${Math.floor(remain/EARN_STEP_MIN)}개)`;
-  const last=getLastEarnRequest();
-  if(last){
-    const diff=Date.now()-new Date(last.at).getTime();
-    if(diff<EARN_COOLDOWN_MS){
-      const sec=Math.ceil((EARN_COOLDOWN_MS-diff)/1000);
-      txt+=` · 다음 요청까지 ${Math.floor(sec/60)}분 ${sec%60}초`;
-    }
+
+  function dateText(value) {
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleString("ko-KR", {
+      month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit"
+    });
   }
-  $('earnStatus').textContent=txt;
-  $('requestEarn').disabled=remain<EARN_STEP_MIN;
-}
-function populateEarnAmounts(){
-  const sel=$('earnAmount');
-  if(sel.options.length)return;
-  for(let m=EARN_STEP_MIN;m<=EARN_DAILY_MAX_MIN;m+=EARN_STEP_MIN){
-    const o=document.createElement('option');o.value=m;o.textContent=`${m}분 · 스티커 ${m/EARN_STEP_MIN}개`;sel.append(o);
+
+  function gameTime(stickers) {
+    const minutes = Math.max(0, stickers) * 5;
+    const hours = Math.floor(minutes / 60);
+    const rest = minutes % 60;
+    if (hours && rest) return `${hours}시간 ${rest}분`;
+    if (hours) return `${hours}시간`;
+    return `${rest}분`;
   }
-}
-let lastBalanceForKey=-1;
-function renderGameSelect(){
-  const gc=$('gameCount');
-  if(lastBalanceForKey===state.balance&&gc.options.length)return;
-  lastBalanceForKey=state.balance;
-  const maxN=Math.min(999,Math.max(0,state.balance));
-  const old=Number(gc.value)||1;gc.innerHTML='';
-  if(maxN===0){
-    const o=document.createElement('option');o.value='0';o.textContent='사용 가능한 스티커가 없어요';gc.append(o);
-  }else{
-    for(let n=1;n<=maxN;n++){
-      const o=document.createElement('option');o.value=n;o.textContent=`${n*5}분 · 스티커 ${n}개`;gc.append(o);
-    }
-    gc.value=String(Math.min(old,maxN));
+
+  function pendingRequests() {
+    return state.requests.filter(r => r.status === "pending");
   }
-  $('requestGame').disabled=state.balance<1;
-}
-function render(){
-  populateEarnAmounts();
-  $('balance').textContent=state.balance;
-  $('remainingTime').textContent=formatMinutes(state.balance*5);
-  $('stars').textContent=state.balance>0?'★ '.repeat(Math.min(state.balance,24)):'☆ ☆ ☆ ☆ ☆';
-  renderGameSelect();
-  updateEarnStatus();
 
-  const rl=$('rewardList');rl.innerHTML='';
-  if(!state.rewards.length)rl.innerHTML='<div class="empty">아직 보상이 없어요. 부모님께 보상을 추가해 달라고 해요.</div>';
-  state.rewards.forEach(r=>{
-    const el=document.createElement('div');el.className='reward';
-    el.innerHTML=`<div class="details"><strong>${esc(r.name)}</strong><p class="muted">${esc(r.desc||'')}</p><strong>⭐ ${r.cost}개</strong><button class="primary" data-reward="${esc(r.id)}" style="margin-top:7px">신청하기</button></div>`;
-    rl.append(el);
-  });
-  rl.querySelectorAll('[data-reward]').forEach(b=>b.onclick=()=>{
-    const r=state.rewards.find(x=>x.id===b.dataset.reward);
-    if(!r)return;
-    if(state.balance<r.cost){alert('스티커가 부족해요.');return;}
-    if(state.requests.some(x=>x.kind==='reward'&&x.rewardId===r.id&&x.status==='pending')){alert('이 보상은 이미 승인 대기 중이에요.');return;}
-    addRequest('reward',r.cost,`보상 신청: ${r.name}`,{rewardId:r.id});
-  });
-
-  const mine=$('myRequests');mine.innerHTML='';
-  const recent=state.requests.slice(0,20);
-  if(!recent.length)mine.innerHTML='<div class="empty">아직 신청한 내용이 없어요.</div>';
-  recent.forEach(r=>{
-    const el=document.createElement('div');el.className='item '+(isPending(r)?'pending':'');
-    const status=r.status==='pending'?'⏳ 부모님 확인 중':r.status==='approved'?'✅ 승인됨':'↩️ 승인되지 않았어요';
-    const extra=(r.status==='rejected'&&r.rejectReason)?`<div class="sub">사유: ${esc(r.rejectReason)}</div>`:'';
-    el.innerHTML=`<div class="details"><strong>${esc(r.reason)}</strong><div class="sub">${fmt(r.at)} · ${status}</div>${extra}</div><div class="amount ${r.kind==='earn'?'plus':'minus'}">${r.kind==='earn'?'+':'−'}${r.amount}</div>`;
-    mine.append(el);
-  });
-
-  const pl=$('pendingList');pl.innerHTML='';
-  const pending=state.requests.filter(isPending);
-  $('pendingCount').textContent=`${pending.length}건`;
-  if(!pending.length)pl.innerHTML='<div class="empty">승인 대기 중인 신청이 없어요.</div>';
-  pending.forEach(r=>{
-    const el=document.createElement('div');el.className='item pending';
-    el.innerHTML=`<div class="details"><strong>${esc(r.reason)}</strong><div class="sub">${fmt(r.at)} · ${r.kind==='game'?'게임 시간':r.kind==='reward'?'보상 사용':r.kind==='earn'?'스티커 획득 신청':'기타'} · ${r.kind==='earn'?'+':'−'}${r.amount}개</div><div class="actions"><button class="green" data-approve="${esc(r.id)}">승인</button><button class="pink" data-reject="${esc(r.id)}">거절</button></div></div>`;
-    pl.append(el);
-  });
-  pl.querySelectorAll('[data-approve]').forEach(b=>b.onclick=()=>{
-    const r=state.requests.find(x=>x.id===b.dataset.approve);if(r)approveRequest(r);
-  });
-  pl.querySelectorAll('[data-reject]').forEach(b=>b.onclick=()=>{
-    const r=state.requests.find(x=>x.id===b.dataset.reject);if(r&&confirm('이 신청을 거절할까요?'))rejectRequest(r);
-  });
-
-  const mr=$('manageRewards');mr.innerHTML='';
-  if(!state.rewards.length)mr.innerHTML='<div class="empty">등록된 보상이 없어요.</div>';
-  state.rewards.forEach(r=>{
-    const el=document.createElement('div');el.className='reward';
-    el.innerHTML=`<div class="details"><strong>${esc(r.name)} · ${r.cost}개</strong><p class="muted">${esc(r.desc||'')}</p><button class="pink" data-delreward="${esc(r.id)}">삭제</button></div>`;
-    mr.append(el);
-  });
-  mr.querySelectorAll('[data-delreward]').forEach(b=>b.onclick=()=>{
-    if(!parentUnlocked)return;
-    if(confirm('이 보상을 목록에서 삭제할까요?')){state.rewards=state.rewards.filter(r=>r.id!==b.dataset.delreward);save();}
-  });
-
-  const revList=$('reversibleList');revList.innerHTML='';
-  const rev=state.history.filter(h=>h.n<0&&!h.reversedBy&&!h.reverses).slice(0,20);
-  if(!rev.length)revList.innerHTML='<div class="empty">되돌릴 수 있는 차감 기록이 없어요.</div>';
-  rev.forEach(h=>{
-    const el=document.createElement('div');el.className='item';
-    el.innerHTML=`<div class="details"><strong>${esc(h.reason)}</strong><div class="sub">${fmt(h.at)} · 차감 ${Math.abs(h.n)}개</div></div><button class="green" data-reverse="${esc(h.id)}">되돌리기</button>`;
-    revList.append(el);
-  });
-  revList.querySelectorAll('[data-reverse]').forEach(b=>b.onclick=()=>{
-    if(!parentUnlocked)return;
-    const h=state.history.find(x=>x.id===b.dataset.reverse);
-    if(!h||h.n>=0||h.reversedBy||h.reverses)return;
-    const reason=prompt('복구 사유를 입력해 주세요.','잘못된 차감 복구');
-    if(!reason||!reason.trim())return;
-    const reversal=log(Math.abs(h.n),`차감 복구: ${reason.trim()}`,'차감 복구',{reverses:h.id});
-    if(reversal){h.reversedBy=reversal.id;save();}
-    else alert('복구 처리에 실패했어요.');
-  });
-
-  const hl=$('history');hl.innerHTML='';
-  $('empty').classList.toggle('hidden',state.history.length>0);
-  state.history.slice(0,60).forEach(h=>{
-    const el=document.createElement('div');el.className='item';
-    el.innerHTML=`<div class="details"><strong>${esc(h.reason)}</strong><div class="sub">${fmt(h.at)} · ${esc(h.type)}</div>${h.reversedBy?'<div class="sub">↩️ 복구 처리됨</div>':''}</div><div class="amount ${h.n>=0?'plus':'minus'}">${h.n>0?'+':''}${h.n}</div>`;
-    hl.append(el);
-  });
-}
-function setupToggles(){
-  document.querySelectorAll('[data-toggle]').forEach(btn=>{
-    btn.onclick=()=>{
-      const t=document.getElementById(btn.dataset.toggle);if(!t)return;
-      const hidden=t.classList.toggle('hidden');btn.textContent=hidden?'펼치기':'가리기';
+  function addHistory(type, amount, title, note, extra = {}) {
+    const entry = {
+      id: makeId(), type, amount: Number(amount) || 0,
+      title, note: note || "", createdAt: now(),
+      reversed: false, ...extra
     };
-  });
-}
-function showChild(){
-  $('childView').classList.remove('hidden');$('parentView').classList.add('hidden');
-  $('childTab').classList.add('active');$('parentTab').classList.remove('active');
-}
-function closeParent(){
-  parentUnlocked=false;
-  $('parentPanel').classList.add('hidden');$('parentGate').classList.remove('hidden');
-  $('parentTab').classList.remove('active');$('childTab').classList.add('active');
-  $('parentView').classList.add('hidden');$('childView').classList.remove('hidden');
-}
-$('childTab').onclick=showChild;
-$('parentTab').onclick=()=>{
-  $('childView').classList.add('hidden');$('parentView').classList.remove('hidden');
-  $('childTab').classList.remove('active');$('parentTab').classList.add('active');
-};
-$('requestGame').onclick=()=>{
-  const n=Number($('gameCount').value)||0;
-  if(!Number.isInteger(n)||n<1||n>state.balance){alert('사용할 스티커 수를 확인해 주세요.');return;}
-  if(state.requests.some(r=>r.kind==='game'&&r.status==='pending'&&r.amount===n)){if(!confirm('같은 수량의 게임 시간 신청이 대기 중이에요. 다시 신청할까요?'))return;}
-  addRequest('game',n,`게임 시간 ${n*5}분 사용 신청`);
-};
-$('requestEarn').onclick=()=>{
-  const reason=$('earnReason').value.trim();
-  const minutes=Number($('earnAmount').value)||EARN_STEP_MIN;
-  const stickers=minutes/EARN_STEP_MIN;
-  if(!reason){alert('무엇을 했는지 적어 주세요.');return;}
-  const last=getLastEarnRequest();
-  if(last){
-    const diff=Date.now()-new Date(last.at).getTime();
-    if(diff<EARN_COOLDOWN_MS){
-      const sec=Math.ceil((EARN_COOLDOWN_MS-diff)/1000);
-      alert(`요청 후 5분이 지나야 다시 요청할 수 있어요.\n남은 시간: ${Math.floor(sec/60)}분 ${sec%60}초`);return;
-    }
+    state.history.unshift(entry);
+    return entry;
   }
-  const today=getTodayEarnMinutes();
-  if(today+minutes>EARN_DAILY_MAX_MIN){
-    alert(`하루 최대 3시간(스티커 36개)까지 요청할 수 있어요.\n오늘 남은 시간: ${Math.max(0,EARN_DAILY_MAX_MIN-today)}분`);return;
-  }
-  if(addRequest('earn',stickers,reason,{minutes}))$('earnReason').value='';
-};
-$('unlock').onclick=()=>{
-  if($('pin').value===state.pin){
-    parentUnlocked=true;$('parentGate').classList.add('hidden');$('parentPanel').classList.remove('hidden');$('pin').value='';render();
-  }else alert('PIN이 맞지 않아요. 다시 확인해 주세요.');
-};
-$('lock').onclick=closeParent;
-$('addReward').onclick=()=>{
-  if(!parentUnlocked)return;
-  const name=$('newRewardName').value.trim();
-  if(!name){alert('보상 이름을 입력해 주세요.');return;}
-  state.rewards.push({id:id(),name,cost:Number($('newRewardCost').value),desc:$('newRewardDesc').value.trim()});
-  $('newRewardName').value='';$('newRewardDesc').value='';
-  if(save())alert('보상을 추가했어요.');
-};
-$('adjustBalance').onclick=()=>{
-  if(!parentUnlocked){alert('먼저 부모님 확인을 해주세요.');return;}
-  const n=Number($('adjustAmount').value),reason=$('adjustReason').value.trim();
-  if(!reason){alert('변경 사유를 입력해 주세요.');return;}
-  const h=log(n,`부모님 잔액 수정: ${reason}`,'부모 수정');
-  if(!h){alert('현재 잔액보다 많이 차감할 수 없거나 변경값이 올바르지 않습니다.');return;}
-  $('adjustReason').value='';
-  if(save())alert('잔액을 변경했어요.');
-};
-$('changePin').onclick=()=>{
-  if(!parentUnlocked)return;
-  const p=$('newPin').value.trim();
-  if(p.length<4){alert('PIN은 4자리 이상으로 입력해 주세요.');return;}
-  state.pin=p;$('newPin').value='';
-  if(save())alert('PIN을 변경했어요.');
-};
-$('export').onclick=()=>{
-  if(!parentUnlocked)return;
-  try{
-    const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-    const url=URL.createObjectURL(blob),a=document.createElement('a');
-    a.href=url;a.download='starbean-backup.json';document.body.appendChild(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-  }catch(e){alert('백업 저장에 실패했어요.');}
-};
-$('importBtn').onclick=()=>{if(parentUnlocked)$('importFile').click();};
-$('importFile').onchange=async e=>{
-  if(!parentUnlocked){e.target.value='';return;}
-  const f=e.target.files[0];if(!f)return;
-  try{
-    const x=JSON.parse(await f.text());
-    if(!x||typeof x.balance!=='number'||!Number.isInteger(x.balance)||x.balance<0||
-       !Array.isArray(x.history)||!Array.isArray(x.requests)||!Array.isArray(x.rewards)||
-       !Array.isArray(x.claimed)||typeof x.pin!=='string')throw new Error('invalid backup');
-    if(!x.history.every(h=>h&&Number.isInteger(h.n)&&typeof h.id==='string')||
-       !x.requests.every(r=>r&&typeof r.id==='string'&&['game','reward','earn'].includes(r.kind)&&Number.isFinite(r.amount))||
-       !x.rewards.every(r=>r&&typeof r.id==='string'&&typeof r.name==='string'&&Number.isFinite(r.cost)&&r.cost>0))throw new Error('invalid fields');
-    if(confirm('현재 데이터가 백업 파일 내용으로 바뀝니다. 계속할까요?')){
-      const old=state;
-      state={...defaultState(),...x};
-      if(save())alert('복원이 완료됐어요.');else state=old;
-    }
-  }catch(err){alert('올바른 별콩 백업 파일이 아니거나 데이터가 손상됐어요.');}
-  e.target.value='';
-};
 
-safeLoad();
-setupToggles();
-accrue();
-render();
-setInterval(updateEarnStatus,1000);
+  function applyBalanceChange(delta, title, note, type, requestId = null) {
+    const before = state.balance;
+    state.balance = Math.max(0, state.balance + delta);
+    const actualDelta = state.balance - before;
+    return addHistory(type, actualDelta, title, note, {
+      reversible: actualDelta < 0,
+      reversed: false,
+      requestId
+    });
+  }
+
+  function render() {
+    const balance = state.balance;
+    document.getElementById("childBalance").textContent = balance;
+    document.getElementById("parentBalance").textContent = balance;
+    document.getElementById("childGameTime").textContent = gameTime(balance);
+    document.getElementById("parentGameTime").textContent = gameTime(balance);
+    document.getElementById("pendingCount").textContent = pendingRequests().length + "건";
+    document.getElementById("parentPendingBadge").textContent = pendingRequests().length + "건 대기";
+
+    renderChildConfirmations();
+    renderParentRequests();
+    renderRewards();
+    renderReversible();
+    renderHistory();
+  }
+
+  function statusBadge(status) {
+    if (status === "approved") return '<span class="badge ok">승인</span>';
+    if (status === "rejected") return '<span class="badge no">거절</span>';
+    if (status === "cancelled") return '<span class="badge">취소됨</span>';
+    return '<span class="badge wait">확인 대기</span>';
+  }
+
+  function requestTypeText(type) {
+    return type === "earn" ? "스티커 획득 요청" : "스티커 사용 요청";
+  }
+
+  function renderChildConfirmations() {
+    const el = document.getElementById("childConfirmList");
+    const items = [];
+
+    state.requests.forEach(r => {
+      items.push({
+        date: r.createdAt || "",
+        html: `
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">${esc(requestTypeText(r.type))} · ${esc(r.amount)}개</div>
+                <div class="item-desc">${esc(r.note || "요청 내용 없음")}</div>
+                <div class="item-desc">요청: ${esc(dateText(r.createdAt))}</div>
+              </div>
+              ${statusBadge(r.status)}
+            </div>
+            ${r.parentNote ? `<div class="item-desc">부모님 답변: ${esc(r.parentNote)}</div>` : ""}
+            ${r.status === "pending" ? `
+              <div class="item-actions">
+                <button class="danger small-btn" data-cancel-request="${esc(r.id)}">요청 취소</button>
+              </div>` : ""}
+          </div>`
+      });
+    });
+
+    state.history.forEach(h => {
+      const isRelevant = /(승인|복구|부모님 수정|잔액 수정|차감|획득|사용|되돌림|거절)/.test(
+        `${h.title || ""} ${h.note || ""}`
+      );
+      if (!isRelevant) return;
+      items.push({
+        date: h.createdAt || "",
+        html: `
+          <div class="item">
+            <div class="item-top">
+              <div>
+                <div class="item-title">${esc(h.title)}</div>
+                <div class="item-desc">${esc(h.note || "추가 설명 없음")}</div>
+                <div class="item-desc">${esc(dateText(h.createdAt))}</div>
+              </div>
+              <div class="amount ${h.amount > 0 ? "positive" : h.amount < 0 ? "negative" : ""}">
+                ${h.amount > 0 ? "+" : ""}${esc(h.amount)}개
+              </div>
+            </div>
+          </div>`
+      });
+    });
+
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    el.innerHTML = items.length
+      ? items.map(x => x.html).join("")
+      : '<div class="empty">아직 확인할 내용이 없어요.<br>요청을 보내면 여기에 표시돼요.</div>';
+  }
+
+  function renderParentRequests() {
+    const el = document.getElementById("parentRequestList");
+    const items = [...state.requests].sort((a, b) => {
+      if (a.status === "pending" && b.status !== "pending") return -1;
+      if (a.status !== "pending" && b.status === "pending") return 1;
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+    el.innerHTML = items.length ? items.map(r => `
+      <div class="item">
+        <div class="item-top">
+          <div>
+            <div class="item-title">${esc(requestTypeText(r.type))} · ${esc(r.amount)}개</div>
+            <div class="item-desc">${esc(r.note || "요청 내용 없음")}</div>
+            <div class="item-desc">요청: ${esc(dateText(r.createdAt))}</div>
+          </div>
+          ${statusBadge(r.status)}
+        </div>
+        ${r.status === "pending" ? `
+          <div class="item-actions">
+            <button class="primary small-btn" data-approve="${esc(r.id)}">승인</button>
+            <button class="danger small-btn" data-reject="${esc(r.id)}">거절</button>
+          </div>
+          <label for="parentNote-${esc(r.id)}">답변 (선택)</label>
+          <input id="parentNote-${esc(r.id)}" maxlength="200" placeholder="예: 잘했어!">
+        ` : `
+          ${r.parentNote ? `<div class="item-desc">답변: ${esc(r.parentNote)}</div>` : ""}
+          ${r.decidedAt ? `<div class="item-desc">처리: ${esc(dateText(r.decidedAt))}</div>` : ""}
+        `}
+      </div>
+    `).join("") : '<div class="empty">아직 들어온 요청이 없어요.</div>';
+  }
+
+  function renderRewards() {
+    const el = document.getElementById("rewardList");
+    el.innerHTML = state.rewards.length ? state.rewards.map(r => `
+      <div class="item">
+        <div class="item-top">
+          <div>
+            <div class="item-title">${esc(r.name)}</div>
+            <div class="item-desc">${esc(r.amount)}개</div>
+          </div>
+          <button class="danger small-btn" data-delete-reward="${esc(r.id)}">삭제</button>
+        </div>
+        <div class="item-actions">
+          <button class="secondary small-btn" data-request-reward="${esc(r.id)}">이 항목으로 획득 요청</button>
+        </div>
+      </div>
+    `).join("") : '<div class="empty">등록된 보상 항목이 없어요.</div>';
+  }
+
+  function renderReversible() {
+    const el = document.getElementById("reversibleList");
+    const items = state.history.filter(h =>
+      h.reversible && h.amount < 0 && !h.reversed
+    );
+    el.innerHTML = items.length ? items.map(h => `
+      <div class="item">
+        <div class="item-top">
+          <div>
+            <div class="item-title">${esc(h.title)}</div>
+            <div class="item-desc">${esc(h.note || "사유 없음")}</div>
+            <div class="item-desc">${esc(dateText(h.createdAt))}</div>
+          </div>
+          <div class="amount negative">${esc(h.amount)}개</div>
+        </div>
+        <div class="item-actions">
+          <button class="secondary small-btn" data-reverse="${esc(h.id)}">차감 되돌리기</button>
+        </div>
+      </div>
+    `).join("") : '<div class="empty">되돌릴 수 있는 차감 기록이 없어요.</div>';
+  }
+
+  function renderHistory() {
+    const el = document.getElementById("historyList");
+    el.innerHTML = state.history.length ? state.history.map(h => `
+      <div class="item">
+        <div class="item-top">
+          <div>
+            <div class="item-title">${esc(h.title)}${h.reversed ? " · 되돌림 완료" : ""}</div>
+            <div class="item-desc">${esc(h.note || "사유 없음")}</div>
+            <div class="item-desc">${esc(dateText(h.createdAt))}</div>
+          </div>
+          <div class="amount ${h.amount > 0 ? "positive" : h.amount < 0 ? "negative" : ""}">
+            ${h.amount > 0 ? "+" : ""}${esc(h.amount)}개
+          </div>
+        </div>
+      </div>
+    `).join("") : '<div class="empty">아직 기록이 없어요.</div>';
+  }
+
+  function switchView(view) {
+    document.getElementById("childView").style.display = view === "child" ? "" : "none";
+    document.getElementById("parentView").style.display = view === "parent" ? "" : "none";
+    document.querySelectorAll(".tab").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.view === view);
+    });
+    if (view === "parent" && !parentUnlocked) {
+      document.getElementById("pinGate").classList.remove("hidden");
+      document.getElementById("parentUnlocked").classList.add("hidden");
+    }
+  }
+
+  document.querySelectorAll(".tab").forEach(btn => {
+    btn.addEventListener("click", () => switchView(btn.dataset.view));
+  });
+
+  document.getElementById("pinForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const entered = document.getElementById("parentPin").value;
+    if (entered !== state.pin) {
+      alert("PIN이 올바르지 않아요.");
+      document.getElementById("parentPin").value = "";
+      return;
+    }
+    parentUnlocked = true;
+    document.getElementById("pinGate").classList.add("hidden");
+    document.getElementById("parentUnlocked").classList.remove("hidden");
+    document.getElementById("parentPin").value = "";
+    render();
+  });
+
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    parentUnlocked = false;
+    document.getElementById("pinGate").classList.remove("hidden");
+    document.getElementById("parentUnlocked").classList.add("hidden");
+    document.getElementById("parentPin").value = "";
+    switchView("child");
+  });
+
+  document.getElementById("childRequestForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const type = document.getElementById("requestType").value;
+    const amount = Math.floor(Number(document.getElementById("requestAmount").value));
+    const note = document.getElementById("requestNote").value.trim();
+
+    if (!Number.isFinite(amount) || amount < 1) {
+      alert("스티커 개수를 확인해 주세요.");
+      return;
+    }
+    if (type === "spend" && amount > state.balance) {
+      alert("현재 스티커 잔액보다 많이 사용할 수 없어요.");
+      return;
+    }
+
+    state.requests.unshift({
+      id: makeId(), type, amount, note,
+      status: "pending", createdAt: now(),
+      decidedAt: null, parentNote: ""
+    });
+    addHistory("request", 0, "부모님 확인 요청", `${requestTypeText(type)} ${amount}개 · ${note || "내용 없음"}`);
+    document.getElementById("requestAmount").value = "1";
+    document.getElementById("requestNote").value = "";
+    save();
+    alert("부모님께 확인 요청을 보냈어요.");
+  });
+
+  document.getElementById("childConfirmList").addEventListener("click", e => {
+    const btn = e.target.closest("[data-cancel-request]");
+    if (!btn) return;
+    const r = state.requests.find(x => x.id === btn.dataset.cancelRequest);
+    if (!r || r.status !== "pending") return;
+    if (!confirm("이 요청을 취소할까요?")) return;
+    r.status = "cancelled";
+    r.decidedAt = now();
+    addHistory("request", 0, "요청 취소", `${requestTypeText(r.type)} ${r.amount}개 요청을 취소했어요.`);
+    save();
+  });
+
+  document.getElementById("parentRequestList").addEventListener("click", e => {
+    const approveBtn = e.target.closest("[data-approve]");
+    const rejectBtn = e.target.closest("[data-reject]");
+    if (!approveBtn && !rejectBtn) return;
+
+    const id = (approveBtn || rejectBtn).dataset.approve || (approveBtn || rejectBtn).dataset.reject;
+    const r = state.requests.find(x => x.id === id);
+    if (!r || r.status !== "pending") return;
+
+    const noteInput = document.getElementById("parentNote-" + id);
+    const parentNote = noteInput ? noteInput.value.trim() : "";
+
+    if (approveBtn) {
+      if (r.type === "spend" && r.amount > state.balance) {
+        alert("현재 잔액이 부족해 승인할 수 없어요.");
+        return;
+      }
+      if (!confirm(`${requestTypeText(r.type)} ${r.amount}개를 승인할까요?`)) return;
+
+      if (r.type === "earn") {
+        state.balance += r.amount;
+        addHistory("earn", r.amount, "스티커 획득 승인", `${r.amount}개 · ${r.note || "요청 승인"}`, {requestId:r.id});
+      } else {
+        const entry = applyBalanceChange(-r.amount, "스티커 사용 승인", `${r.amount}개 · ${r.note || "요청 승인"}`, "spend", r.id);
+        entry.reversible = true;
+      }
+      r.status = "approved";
+      r.parentNote = parentNote;
+      r.decidedAt = now();
+    } else {
+      if (!confirm("이 요청을 거절할까요?")) return;
+      r.status = "rejected";
+      r.parentNote = parentNote;
+      r.decidedAt = now();
+      addHistory("request", 0, "요청 거절", `${requestTypeText(r.type)} ${r.amount}개 · ${parentNote || "거절 처리"}`, {requestId:r.id});
+    }
+    save();
+  });
+
+  document.getElementById("rewardForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("rewardName").value.trim();
+    const amount = Math.floor(Number(document.getElementById("rewardAmount").value));
+    if (!name || !Number.isFinite(amount) || amount < 1) {
+      alert("보상 이름과 스티커 개수를 확인해 주세요.");
+      return;
+    }
+    state.rewards.unshift({id:makeId(), name, amount});
+    document.getElementById("rewardName").value = "";
+    document.getElementById("rewardAmount").value = "1";
+    save();
+  });
+
+  document.getElementById("rewardList").addEventListener("click", e => {
+    const del = e.target.closest("[data-delete-reward]");
+    const request = e.target.closest("[data-request-reward]");
+
+    if (del) {
+      if (!confirm("이 보상 항목을 삭제할까요?")) return;
+      state.rewards = state.rewards.filter(r => r.id !== del.dataset.deleteReward);
+      save();
+      return;
+    }
+    if (request) {
+      const reward = state.rewards.find(r => r.id === request.dataset.requestReward);
+      if (!reward) return;
+      state.requests.unshift({
+        id: makeId(), type:"earn", amount:reward.amount,
+        note:reward.name, status:"pending", createdAt:now(),
+        decidedAt:null, parentNote:""
+      });
+      addHistory("request", 0, "보상 획득 요청", `${reward.name} · ${reward.amount}개`);
+      save();
+      alert("보상 획득 요청을 등록했어요.");
+    }
+  });
+
+  document.getElementById("adjustForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const type = document.getElementById("adjustType").value;
+    const amount = Math.floor(Number(document.getElementById("adjustAmount").value));
+    const note = document.getElementById("adjustNote").value.trim();
+
+    if (!Number.isFinite(amount) || amount < 1 || !note) {
+      alert("스티커 개수와 수정 사유를 입력해 주세요.");
+      return;
+    }
+    if (type === "subtract" && amount > state.balance) {
+      alert("현재 잔액보다 많이 차감할 수 없어요.");
+      return;
+    }
+    const delta = type === "add" ? amount : -amount;
+    const title = type === "add" ? "부모님 수정: 스티커 추가" : "부모님 수정: 스티커 차감";
+    const entry = applyBalanceChange(delta, title, note, "adjust");
+    if (delta < 0) entry.reversible = true;
+
+    document.getElementById("adjustAmount").value = "1";
+    document.getElementById("adjustNote").value = "";
+    save();
+    alert("잔액을 수정했어요.");
+  });
+
+  document.getElementById("reversibleList").addEventListener("click", e => {
+    const btn = e.target.closest("[data-reverse]");
+    if (!btn) return;
+
+    const entry = state.history.find(h => h.id === btn.dataset.reverse);
+    if (!entry || !entry.reversible || entry.reversed || entry.amount >= 0) return;
+
+    const restore = Math.abs(entry.amount);
+    if (!confirm(`"${entry.title}" 차감 ${restore}개를 되돌릴까요?`)) return;
+
+    state.balance += restore;
+    entry.reversed = true;
+    entry.reversedAt = now();
+    addHistory("restore", restore, "잘못된 차감 복구", `${entry.title}의 차감 ${restore}개를 되돌렸어요.`, {
+      reversedEntryId: entry.id
+    });
+    save();
+    alert(`${restore}개를 복구했어요.`);
+  });
+
+  document.querySelectorAll("[data-toggle]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(btn.dataset.toggle);
+      if (!target) return;
+      const opening = target.classList.contains("hidden");
+      target.classList.toggle("hidden", !opening);
+      btn.textContent = opening ? "접기" : "펼치기";
+    });
+  });
+
+  document.getElementById("pinChangeForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const pin = document.getElementById("newPin").value.trim();
+    if (!/^\d{4,12}$/.test(pin)) {
+      alert("PIN은 숫자 4~12자리로 입력해 주세요.");
+      return;
+    }
+    if (!confirm("부모님 PIN을 변경할까요?")) return;
+    state.pin = pin;
+    document.getElementById("newPin").value = "";
+    save();
+    alert("PIN을 변경했어요.");
+  });
+
+  document.getElementById("exportBtn").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "byeolkong-backup-" + new Date().toISOString().slice(0,10) + ".json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById("importFile").addEventListener("change", async e => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    try {
+      const parsed = JSON.parse(await file.text());
+      if (
+        !parsed || typeof parsed !== "object" ||
+        !Number.isFinite(Number(parsed.balance)) ||
+        !Array.isArray(parsed.requests) ||
+        !Array.isArray(parsed.history) ||
+        !Array.isArray(parsed.rewards)
+      ) {
+        throw new Error("invalid backup");
+      }
+      if (!confirm("현재 데이터를 백업 파일 내용으로 교체할까요? 현재 데이터는 덮어써져요.")) {
+        e.target.value = "";
+        return;
+      }
+      state = {
+        version:3,
+        balance:Math.max(0, Math.floor(Number(parsed.balance))),
+        pin:/^\d{4,12}$/.test(String(parsed.pin || "")) ? String(parsed.pin) : "1234",
+        requests:parsed.requests,
+        history:parsed.history,
+        rewards:parsed.rewards
+      };
+      save();
+      alert("백업 데이터를 복원했어요.");
+    } catch (err) {
+      alert("백업 파일을 읽을 수 없어요. 별콩 백업 JSON 파일인지 확인해 주세요.");
+    }
+    e.target.value = "";
+  });
+
+  render();
 })();
 </script>
 </body>
