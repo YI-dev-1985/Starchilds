@@ -115,7 +115,7 @@ hr { border:0; border-top:1px solid var(--line); margin:16px 0; }
   <section class="balance-card">
     <div class="balance-label">현재 스티커 잔액</div>
     <div class="balance"><span id="balance">0</span><span>개</span></div>
-    <div class="game-time">🎮 게임 가능 시간 <strong id="gameTime">0분</strong> · 스티커 1개 = 5분</div>
+    <div class="game-time">🎮 모은 시간 <strong id="gameTime">0분</strong> · 스티커 1개 = 5분</div>
   </section>
 
   <section class="grid">
@@ -253,13 +253,22 @@ function normalizeHistoryEntry(entry) {
   let signedAmount = amount;
   if (type === "spend" && signedAmount > 0) signedAmount = -signedAmount;
 
+  let normalizedDate;
+  try {
+    normalizedDate = typeof rawDate === "number"
+      ? new Date(rawDate).toISOString()
+      : String(rawDate);
+  } catch {
+    normalizedDate = new Date().toISOString();
+  }
+
   return {
     id:String(entry.id || entry.uid || makeId()),
     type,
     amount:signedAmount,
     title:String(rawTitle),
     note:String(entry.note ?? entry.memo ?? entry.description ?? ""),
-    date:typeof rawDate === "number" ? new Date(rawDate).toISOString() : String(rawDate),
+    date:normalizedDate,
     reversed:Boolean(entry.reversed || entry.undone || entry.cancelled),
     reversible:entry.reversible !== false,
     ...(entry.scheduleId ? {scheduleId:String(entry.scheduleId)} : {}),
@@ -290,20 +299,6 @@ function normalizeSchedule(schedule) {
 }
 function defaultState() {
   return {version:APP_VERSION,balance:0,history:[],schedules:[]};
-}
-
-function loadState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultState();
-    const parsed = JSON.parse(raw);
-    const data = findBackupData(parsed);
-    if (!data) return defaultState();
-    return sanitizeState(data);
-  } catch (error) {
-    console.error("저장 데이터 읽기 실패:",error);
-    return defaultState();
-  }
 }
 function findBackupData(obj, depth=0) {
   if (!obj || typeof obj !== "object" || Array.isArray(obj) || depth>5) return null;
@@ -337,13 +332,28 @@ function findBackupData(obj, depth=0) {
 }
 function sanitizeState(data) {
   const balance = Number(data.balance);
-  if (!Number.isFinite(balance)) throw new Error("잔액 값이 숫자가 아닙니다.");
+  if (!Number.isFinite(balance) || !Number.isSafeInteger(balance)) {
+    throw new Error("잔액 값이 올바른 정수가 아닙니다.");
+  }
   return {
     version:APP_VERSION,
-    balance:Math.floor(balance),
+    balance,
     history:Array.isArray(data.history) ? data.history.map(normalizeHistoryEntry).filter(Boolean) : [],
     schedules:Array.isArray(data.schedules) ? data.schedules.map(normalizeSchedule).filter(Boolean) : []
   };
+}
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    const parsed = JSON.parse(raw);
+    const data = findBackupData(parsed);
+    if (!data) return defaultState();
+    return sanitizeState(data);
+  } catch (error) {
+    console.error("저장 데이터 읽기 실패:",error);
+    return defaultState();
+  }
 }
 
 let state = loadState();
@@ -463,10 +473,25 @@ function processDueSchedules() {
   if (changed) saveState();
 }
 
+/* 잔액과 게임 가능 시간을 시간·분 단위로 표시 */
 function renderBalance() {
   $("balance").textContent=state.balance.toLocaleString("ko-KR");
-  $("gameTime").textContent=(state.balance*5).toLocaleString("ko-KR")+"분";
+
+  const totalMinutes=state.balance*5;
+  const absMinutes=Math.abs(totalMinutes);
+  const hours=Math.floor(absMinutes/60);
+  const minutes=absMinutes%60;
+
+  let displayTime="";
+  if (totalMinutes<0) displayTime="-";
+
+  if (hours>0) displayTime+=hours+"시간";
+  if (minutes>0) displayTime+=(hours>0?" ":"")+minutes+"분";
+  if (totalMinutes===0) displayTime="0분";
+
+  $("gameTime").textContent=displayTime;
 }
+
 function renderSchedules() {
   const box=$("scheduleList");
   if (!state.schedules.length) {
@@ -570,7 +595,7 @@ $("historyList").addEventListener("click",event=>{
   if (b) undoHistory(b.dataset.id);
 });
 
-/* 저장: 표준 JSON 백업 파일 */
+/* 백업 파일 저장 */
 function downloadBlob(blob,filename) {
   const url=URL.createObjectURL(blob);
   const a=document.createElement("a");
@@ -598,19 +623,19 @@ $("backupBtn").addEventListener("click",()=>{
   downloadBlob(blob,`byeolkong-backup-${todayKey()}.json`);
 });
 
-/* 복원: 파일을 읽고 검증한 다음에만 현재 데이터를 교체 */
+/* 백업 파일 복원 */
 $("restoreBtn").addEventListener("click",()=>$("restoreFile").click());
 $("restoreFile").addEventListener("change",async event=>{
   const file=event.target.files?.[0];
   if (!file) return;
 
   try {
-    const text=await file.text();
-    if (!text.trim()) throw new Error("파일이 비어 있습니다.");
+    const fileText=await file.text();
+    if (!fileText.trim()) throw new Error("파일이 비어 있습니다.");
 
     let parsed;
     try {
-      parsed=JSON.parse(text);
+      parsed=JSON.parse(fileText);
     } catch {
       throw new Error("JSON 형식이 아닙니다. 별콩 백업 파일을 선택해 주세요.");
     }
@@ -632,7 +657,6 @@ $("restoreFile").addEventListener("change",async event=>{
     state=restored;
     state.version=APP_VERSION;
 
-    // 저장 성공을 먼저 확인하고 화면을 갱신
     try {
       localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
     } catch (error) {
